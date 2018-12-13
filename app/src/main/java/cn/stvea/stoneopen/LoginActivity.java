@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new PostFunc(LoginActivity.this,"https://www.baidu.com","asdasd",progressBar).execute();
+                new PostFunc(LoginActivity.this,"http://192.168.31.154:80/login.php","asdasd",progressBar,"username=stvea&password=123").execute();
                 //Toast.makeText(LoginActivity.this,"asd",Toast.LENGTH_SHORT).show();
             }
         });
