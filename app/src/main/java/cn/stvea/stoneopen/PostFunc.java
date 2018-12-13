@@ -6,13 +6,19 @@
 
 package cn.stvea.stoneopen;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,19 +28,26 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
+import static android.support.v4.content.ContextCompat.startActivity;
+
 public class PostFunc extends AsyncTask<Void, Integer, Integer> {
     private Context context;
+    private Context nextContext;
     private String url;
     private String postValue;
     private ProgressBar progressBar;
     private String content;
+    private String result;
+    private Handler handler;
 
-    public PostFunc(Context context, String url, String postValue, ProgressBar progressBar,String content) {
+
+    public PostFunc(Context context, String url, String postValue, ProgressBar progressBar, String content,Handler handler) {
         this.context = context;
         this.url = url;
         this.postValue = postValue;
         this.content = content;
         this.progressBar = progressBar;
+        this.handler = handler;
     }
 
     @Override
@@ -78,7 +91,18 @@ public class PostFunc extends AsyncTask<Void, Integer, Integer> {
             int length = connection.getContentLength();
             Log.d("length", "length=" + length);
             Map<String, List<String>> map = connection.getHeaderFields();
-
+            if(respondCode == 200){
+                is = connection.getInputStream();
+                ByteArrayOutputStream message = new ByteArrayOutputStream();
+                int len=0;
+                byte buffer[] = new byte[1024];
+                while ((len = is.read(buffer))!=-1){
+                    message.write(buffer,0,len);
+                }
+                is.close();
+                message.close();
+                result = new String(message.toByteArray());
+            }
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -91,6 +115,12 @@ public class PostFunc extends AsyncTask<Void, Integer, Integer> {
     @Override
     protected void onPostExecute(Integer integer) {
         super.onPostExecute(integer);
-        Toast.makeText(context,String.valueOf(integer),Toast.LENGTH_SHORT).show();
+        Message msg = handler.obtainMessage();
+        msg.what = 1;
+        msg.obj = result;
+        handler.sendMessage(msg);
     }
+
+
+
 }
