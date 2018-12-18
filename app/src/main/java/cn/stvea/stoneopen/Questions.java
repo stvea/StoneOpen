@@ -4,12 +4,58 @@
  *  @https://STVEA.cn
  */
 
+//json {id,title,introduce,likes}
+
 package cn.stvea.stoneopen;
 
-public class Questions {
-    public String questions_title;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 
-    public Questions(String questions_title) {
-        this.questions_title = questions_title;
+import java.util.logging.LogRecord;
+
+public class Questions {
+    public int id;
+    public String introduce;
+    public String title;
+    public int likes;
+
+    public Questions(int id, String introduce, String title, int likes) {
+        this.id = id;
+        this.introduce = introduce;
+        this.title = title;
+        this.likes = likes;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }

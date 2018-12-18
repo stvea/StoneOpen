@@ -45,9 +45,16 @@ public class QuestionsAdapter extends BaseAdapter {
         if(convertView == null){
             convertView = mInflater.inflate(R.layout.listview_questions,null);
         }
+
         TextView titleView = (TextView)convertView.findViewById(R.id.questionsTitle);
+//        TextView introduceView = (TextView)convertView.findViewById(R.id.questionsIntroduce);
+//        TextView likeView = (TextView)convertView.findViewById(R.id.questionsLike);
+
         Questions questions = mList.get(position);
-        titleView.setText(questions.questions_title);
+        titleView.setText(questions.title);
+//        introduceView.setText(questions.introduce);
+//        likeView.setText(questions.likes);
+
         return convertView;
     }
 }

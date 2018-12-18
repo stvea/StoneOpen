@@ -19,8 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private Button loginBtn;
     private ProgressBar progressBar;
-    private String msgs;
-    public int asd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String userinfo = "username="+username.getText().toString()+"&password="+password.getText().toString();
+                Toast.makeText(LoginActivity.this,"正在登陆",Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.VISIBLE);
 
                 Handler handler = new Handler(){
                     @Override
@@ -52,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 };
                 Log.d("userinfo",userinfo);
-                new PostFunc(LoginActivity.this,"http://192.168.31.154:80/login.php","asdasd",progressBar,userinfo,handler).execute();
+                new PostFunc("http://192.168.31.154:80/login.php",userinfo,handler).execute();
 
 
                 //Toast.makeText(LoginActivity.this,"asd",Toast.LENGTH_SHORT).show();

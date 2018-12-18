@@ -31,30 +31,22 @@ import java.util.Map;
 import static android.support.v4.content.ContextCompat.startActivity;
 
 public class PostFunc extends AsyncTask<Void, Integer, Integer> {
-    private Context context;
-    private Context nextContext;
+
     private String url;
-    private String postValue;
-    private ProgressBar progressBar;
     private String content;
     private String result;
     private Handler handler;
 
 
-    public PostFunc(Context context, String url, String postValue, ProgressBar progressBar, String content,Handler handler) {
-        this.context = context;
+    public PostFunc(String url, String content,Handler handler) {
         this.url = url;
-        this.postValue = postValue;
         this.content = content;
-        this.progressBar = progressBar;
         this.handler = handler;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Toast.makeText(context,"正在登陆",Toast.LENGTH_SHORT).show();
-        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
