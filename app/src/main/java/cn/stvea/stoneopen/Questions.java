@@ -19,12 +19,30 @@ public class Questions {
     public String introduce;
     public String title;
     public int likes;
+    public String texts;
 
     public Questions(int id, String introduce, String title, int likes) {
         this.id = id;
         this.introduce = introduce;
         this.title = title;
         this.likes = likes;
+    }
+
+    public Questions(int id, String introduce, String title, int likes, String texts) {
+        this.id = id;
+        this.introduce = introduce;
+        this.title = title;
+        this.likes = likes;
+        this.texts = texts;
+    }
+
+    public void setText(String texts) {
+        this.texts = texts;
+    }
+
+    public String getTexts() {
+
+        return texts;
     }
 
     public int getId() {

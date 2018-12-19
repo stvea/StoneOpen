@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018/12/19
+  ~  By 葛超2016020900030 徐慧东2016020800168
+  ~  @https://STVEA.cn
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#ffffff" android:state_checked="false"></item>
+    <item android:color="#ff4040" android:state_checked="true"></item>
+</selector>

@@ -10,6 +10,8 @@
     android:layout_height="match_parent"
     >
 
+
+
     <TextView
         android:id="@+id/questionsTitle"
         android:layout_width="match_parent"
@@ -39,4 +41,5 @@
         android:paddingRight="20sp"
         android:paddingEnd="20sp"
         android:text="Like:12" />
+
 </RelativeLayout>
