@@ -19,24 +19,47 @@
         android:id="@+id/questionsTitle"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
         android:textColor="@color/colorBlack"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/questionsText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="20dp" />
 
     <TextView
         android:id="@+id/questionsText"
-        android:layout_width="0dp"
-        android:layout_height="500sp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="363dp"
+        android:layout_height="244dp"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="90dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加你的回答"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="350dp" />
+
+    <EditText
+        android:id="@+id/etAnswer"
+        android:layout_width="374dp"
+        android:layout_height="143dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="377dp" />
+
+    <Button
+        android:id="@+id/btnAnswer"
+        android:layout_width="175dp"
+        android:layout_height="44dp"
+        android:background="@color/colorAccent"
+        android:text="提交"
+        android:textColor="@android:color/background_light"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="552dp" />
+
 </android.support.constraint.ConstraintLayout>
