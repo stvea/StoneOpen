@@ -11,29 +11,29 @@
     <FrameLayout
         android:id="@+id/homeContent"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="542dp"
         android:layout_weight="1"></FrameLayout>
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
         android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/radioHome"
             style="@style/MainButtonStyle"
             android:drawableTop="@drawable/home_button_selector"
-            android:text="RadioButton"
+
             />
 
         <RadioButton
             android:id="@+id/radioAdd"
             style="@style/MainButtonStyle"
-            android:drawableTop="@drawable/home_button_selector"
-            android:text="RadioButton" />
+            android:drawableTop="@drawable/my_button_selector" />
+
     </RadioGroup>
 
 </LinearLayout>

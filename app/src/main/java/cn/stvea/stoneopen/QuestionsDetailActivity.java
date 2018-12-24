@@ -29,6 +29,7 @@ import java.util.List;
 public class QuestionsDetailActivity extends AppCompatActivity {
 
     private int questionID;
+    private Questions question;
     private TextView tvText;
     private TextView tvTitle;
     @Override
@@ -41,24 +42,21 @@ public class QuestionsDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int id  = intent.getIntExtra("id",1);
         String content = "id="+id;
-//        Handler handler = new Handler() {
-//            @Override
-//            public void handleMessage(Message msg) {
-//                Questions questions;
-//                super.handleMessage(msg);
-//                Log.d("提示",msg.obj.toString());
-//                String jsonArray = "[{\"id\":1,\"introduce\":\"asd\",\"title\":\"asddfdgfd\",\"like\":12,\"text\":\"a啊啊实打实大苏打啊是大阿三\"}]";
-//                Gson gson = new Gson();
-//                questions = gson.fromJson(msg.obj.toString(),Questions.class);
-//            }
-//        };
-//        new PostFunc("http://192.168.31.154:80/getQuestions.php",content,handler).execute();
-        Questions questions;
-        String jsonArray = "{\"id\":1,\"introduce\":\"asd\",\"title\":\"asddfdgfd\",\"likes\":12,\"texts\":\"啊啊实打实大苏打啊是大阿三\"}";
-        Gson gson = new Gson();
-        questions = gson.fromJson(jsonArray,Questions.class);
-        tvTitle.setText(questions.title);
-        tvText.setText(questions.getTexts());
+        Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                Log.d("提示",msg.obj.toString());
+                //String jsonArray = "{\"id\":1,\"introduce\":\"asd\",\"title\":\"asddfdgfd\",\"likes\":12,\"texts\":\"a啊啊实打实大苏打啊是大阿三\"}]";
+                //[{"id":6,"title":"123123","texts":"123123","likes":0,"introduce":"asdasd"}]
+                Gson gson = new Gson();
+                question = gson.fromJson(msg.obj.toString(),Questions.class);
+                tvTitle.setText(question.title);
+                tvText.setText(question.getTexts());
+            }
+        };
+        new PostFunc(getString(R.string.host_name)+"questions.php",content,handler).execute();
+
 
 
     }
