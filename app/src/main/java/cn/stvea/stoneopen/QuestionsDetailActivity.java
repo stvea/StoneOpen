@@ -32,16 +32,22 @@ public class QuestionsDetailActivity extends AppCompatActivity {
     private Questions question;
     private TextView tvText;
     private TextView tvTitle;
+    private ListView listView;
+    private Button addAnswer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         tvTitle = (TextView)findViewById(R.id.questionsTitle);
         tvText = (TextView)findViewById(R.id.questionsText);
-
-        Intent intent = getIntent();
-        int id  = intent.getIntExtra("id",1);
+        listView = (ListView)findViewById(R.id.answerMain);
+        addAnswer = (Button)findViewById(R.id.addAnswer);
+        final Intent intent = getIntent();
+        final int id  = intent.getIntExtra("id",1);
         String content = "id="+id;
+
         Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -57,7 +63,28 @@ public class QuestionsDetailActivity extends AppCompatActivity {
         };
         new PostFunc(getString(R.string.host_name)+"questions.php",content,handler).execute();
 
-
-
+        Handler handlerAnswer = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                List<Answer> answerList = new ArrayList<>();
+                super.handleMessage(msg);
+                Log.d("提示answer",msg.obj.toString());
+                if(!msg.obj.toString().isEmpty()){
+                    Gson gson = new Gson();
+                    answerList = gson.fromJson(msg.obj.toString(),new TypeToken<List<Answer>>(){}.getType());
+                    listView.setAdapter(new AnswerAdapter(QuestionsDetailActivity.this,answerList));
+                }
+            }
+        };
+        new PostFunc(getString(R.string.host_name)+"answer.php",content,handlerAnswer).execute();
+        addAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent();
+                intent1.setClass(QuestionsDetailActivity.this,AddAnswerActivity.class);
+                intent1.putExtra("qid",id);
+                startActivity(intent1);
+            }
+        });
     }
 }

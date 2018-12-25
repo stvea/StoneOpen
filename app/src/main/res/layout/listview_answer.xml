@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018/12/24
+  ~  By 葛超2016020900030 徐慧东2016020800168
+  ~  @https://STVEA.cn
+  -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <TextView
+        android:id="@+id/answerTexts"
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/Like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/answerTexts"
+        android:layout_below="@+id/answerTexts"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/colorPrimary"
+        android:text="Button"
+        android:textColor="@android:color/background_light" />
+
+</RelativeLayout>

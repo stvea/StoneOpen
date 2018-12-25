@@ -4,5 +4,5 @@
     <string name="app_rights">By 葛超 徐惠东@2018.12</string>
     <string name="app_localhost">http://192.168.0.105:80/</string>
     <string name="register"><u>No Account Click to Register</u></string>
-    <string name="host_name">http://192.168.31.154:80/</string>
+    <string name="host_name">http://172.27.165.49:80/</string>
 </resources>
